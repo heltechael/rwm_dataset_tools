@@ -155,9 +155,9 @@ class DatasetExtractor:
                 
                 # Create image symlink
                 try:
-                    self.format_handler.create_image_symlink(source_path, image_id, split)
+                    self.format_handler.create_image_file(source_path, image_id, split)
                 except Exception as e:
-                    logger.warning(f"Failed to create symlink for image {image_id}: {e}")
+                    logger.warning(f"Failed to create file for image {image_id}: {e}")
                     stats['errors'] += 1
                     continue
                 

@@ -10,7 +10,7 @@ setuptools.setup(
     name="rwm_dataset_tools",
     version="0.1.0",
     author="AU Aarhus University",
-    author_email="your.email@example.com",
+    author_email="msn@agro.au.dk",
     description="RoboWeedMaPS dataset extraction tools",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -19,7 +19,7 @@ setuptools.setup(
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
+        "Operating System :: Ubuntu 22.04",
     ],
     python_requires=">=3.6",
     install_requires=requirements,

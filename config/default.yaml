@@ -11,13 +11,16 @@ database:
 # Dataset configuration
 dataset:
   # Root directory for dataset output
-  output_dir: "./output"
+  output_dir: "/fast_data/rwm_dataset"
   
+  # Copy images by default instead of symlink
+  copy_images: false
+
   # Data splitting probabilities
   split_probabilities:
     train: 0.80
-    val: 0.20
-    test: 0.0
+    val: 0.10
+    test: 0.10
   
   # Special handling for uploads and images
   fixed_sets:
@@ -47,8 +50,8 @@ dataset:
 
   # EPPO codes for classes
   eppo_codes:
-    - 'PPPMM'  # Dicot
-    - 'PPPDD'  # Monocot
+    - 'PPPMM'  # Monocot weed
+    - 'PPPDD'  # Dicot weed
     - 'VICFX'  # Faba bean
     - 'PIBSA'  # Field Pea
     - 'ZEAMX'  # Maize
@@ -59,7 +62,25 @@ dataset:
     - 'BRSOL'  # White cabbage
     - 'FAGES'  # Buckwheat
     - '1LUPG'  # Lupinus
-    - 'PSEZ'   # Plant Stem Emergence Zone (Not a real EPPO code)
+    - 'CHEAL'  # Fat-hen
+    - 'FUMOF'  # Common fumitory
+    - '1MATG'  # Chamomile
+    - 'GERMO'  # Dovesfoot cranesbill
+    - 'EPHHE'  # Sun spurge
+    - 'EQUAR'  # Field horsetail
+    - 'GALAP'  # Cleavers
+    - '1CRUF'  # Crucifer
+    - 'SINAR'  # Charlock
+    - 'POLAV'  # Pale persicaria
+    - 'VERPE'  # Common speedwell
+    - 'VIOAR'  # Field pansy
+    - 'POLCO'  # Wild buckwheat
+    - 'TAROF'  # Dandelion
+    - 'POLLA'  # Black bindweed
+    - 'ATXPA'  # Common orache
+    - 'LAMPU'  # Red dead-nettle
+    - 'SENVU'  # Common groundsel
+    - 'PSEZ'   # Plant Stem Emergence Zone
 
   # PSEZ handling - list of EPPOs that PSEZ should be associated with
   psez_crops: ['ZEAMX', 'BEAVA', 'BRSOL']

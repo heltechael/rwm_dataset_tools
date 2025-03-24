@@ -13,7 +13,6 @@ from rwm_dataset_tools.dataset.extraction import DatasetExtractor
 from rwm_dataset_tools.dataset.formats.yolov5 import YOLOv5Format
 from rwm_dataset_tools.dataset.formats.yolov11 import YOLOv11Format
 
-# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -22,7 +21,6 @@ logging.basicConfig(
     ]
 )
 
-# Add more detailed file logging
 file_handler = logging.FileHandler('rwm_extraction.log')
 file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
 logging.getLogger().addHandler(file_handler)
@@ -30,12 +28,6 @@ logging.getLogger().addHandler(file_handler)
 logger = logging.getLogger(__name__)
 
 def parse_arguments() -> argparse.Namespace:
-    """
-    Parse command line arguments.
-    
-    Returns:
-        Parsed arguments
-    """
     parser = argparse.ArgumentParser(description='RWM Dataset Tools')
     
     parser.add_argument(
@@ -85,12 +77,25 @@ def parse_arguments() -> argparse.Namespace:
         action='store_true',
         help='Check database and exit without creating dataset files'
     )
+
+    parser.add_argument(
+        '--copy-images', 
+        action='store_true',
+        help='Copy images instead of creating symlinks (useful for faster storage)'
+    )
+
+    parser.add_argument(
+        '--output-base-dir', 
+        type=str, 
+        default='/fast_data',
+        help='Base directory for output (default: /fast_data)'
+    )
     
     return parser.parse_args()
 
 def main() -> None:
     """
-    Main entry point.
+    Main entry point
     """
     # Parse arguments
     args = parse_arguments()
@@ -124,6 +129,16 @@ def main() -> None:
     # Override configuration with command line arguments
     if args.output_dir:
         config['dataset']['output_dir'] = args.output_dir
+    else:
+        # Set default output directory using the base directory
+        dataset_name = os.path.basename(args.config).split('.')[0]
+        config['dataset']['output_dir'] = os.path.join(args.output_base_dir, f"rwm_dataset_{args.format}")
+        logger.info(f"Using default output directory: {config['dataset']['output_dir']}")
+
+    # Set image copying mode
+    config['dataset']['copy_images'] = args.copy_images
+    if args.copy_images:
+        logger.info("Images will be copied instead of symlinked")
         
     config['random_seed'] = args.seed
     

@@ -87,9 +87,9 @@ class YOLOFormatBase:
         else:
             raise ValueError(f"Invalid split: {split}")
             
-    def create_image_symlink(self, source_path: str, image_id: int, split: str) -> str:
+    def create_image_file(self, source_path: str, image_id: int, split: str) -> str:
         """
-        Create a symlink to an image in the dataset.
+        Create a link to an image in the dataset, either as symlink or copy.
         
         Args:
             source_path: Path to the source image
@@ -97,7 +97,7 @@ class YOLOFormatBase:
             split: Dataset split ('train', 'val', or 'test')
             
         Returns:
-            Path to the created symlink
+            Path to the created link
         """
         # Get the destination directory
         images_dir, _ = self.get_split_paths(split)
@@ -108,11 +108,22 @@ class YOLOFormatBase:
         # Create the destination path
         dest_path = os.path.join(images_dir, f"{image_id}{ext}")
         
-        # Create the symlink
-        create_symlink(source_path, dest_path)
+        # Create the link (symlink or copy)
+        if self.config['dataset'].get('copy_images', False):
+            from shutil import copyfile
+            # Create parent directory if it doesn't exist
+            os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+            if not os.path.exists(dest_path):
+                try:
+                    copyfile(source_path, dest_path)
+                    logger.debug(f"Copied: {source_path} -> {dest_path}")
+                except Exception as e:
+                    logger.error(f"Failed to copy file: {e}")
+                    raise
+        else:
+            create_symlink(source_path, dest_path)
         
         return dest_path
-    
     def row_to_yolo_format(self, row: Dict[str, Any]) -> Optional[str]:
         """
         Convert a row of annotation data to YOLO format.
