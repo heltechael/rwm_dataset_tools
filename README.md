@@ -97,7 +97,7 @@ Each label file contains annotations in YOLO format:
 
 ## EPPO Codes and Classes
 
-The dataset uses the following EPPO codes as classes:
+The dataset contains the follow plant species as EPPO codes, which can be used as classes for training:
 - `PPPMM`: Monocot weed
 - `PPPDD`: Dicot weed
 - `VICFX`: Faba bean
