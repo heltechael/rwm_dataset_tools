@@ -1,6 +1,6 @@
 # RoboWeedMaPS Dataset Tools
 
-A toolkit for extracting, processing, and training on the RoboWeedMaPS (RWM) dataset. This repository provides utilities for creating plant detection datasets from the RoboWeedMaPS database and training various computer vision models.
+A toolkit for extracting, processing, and training on the RoboWeedMaPS (RWM) dataset created and managed by the "Computer Vision in Biosystems" research group from Aarhus University. This repository provides utilities for creating plant detection datasets from the RoboWeedMaPS database and training various computer vision models.
 
 ## Overview 
 
@@ -94,3 +94,38 @@ Each label file contains annotations in YOLO format:
 ```bash
 <class_id> <x_center> <y_center> <width> <height>
 ```
+
+## EPPO Codes and Classes
+
+The dataset uses the following EPPO codes as classes:
+- `PPPMM`: Monocot weed
+- `PPPDD`: Dicot weed
+- `VICFX`: Faba bean
+- `PIBSA`: Field Pea
+- `ZEAMX`: Maize
+- `SOLTU`: Potato
+- `SPQOL`: Spinach
+- `BEAVA`: Sugar beet
+- `CIRAR`: Creeping Thistle
+- `BRSOL`: White cabbage
+- `FAGES`: Buckwheat
+- `1LUPG`: Lupinus
+- `CHEAL`: Fat-hen
+- `FUMOF`: Common fumitory
+- `1MATG`: Chamomile
+- `GERMO`: Dovesfoot cranesbill
+- `EPHHE`: Sun spurge
+- `EQUAR`: Field horsetail
+- `GALAP`: Cleavers
+- `1CRUF`: Crucifer
+- `SINAR`: Charlock
+- `POLAV`: Pale persicaria
+- `VERPE`: Common speedwell
+- `VIOAR`: Field pansy
+- `POLCO`: Wild buckwheat
+- `TAROF`: Dandelion
+- `POLLA`: Black bindweed
+- `ATXPA`: Common orache
+- `LAMPU`: Red dead-nettle
+- `SENVU`: Common groundsel
+- `PSEZ`: Plant Stem Emergence Zone

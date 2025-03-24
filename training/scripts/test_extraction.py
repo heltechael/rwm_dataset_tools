@@ -98,7 +98,7 @@ def test_dataset(dataset_yaml, num_batches=2):
 
 if __name__ == "__main__":
     # Path to your extracted dataset YAML
-    dataset_yaml = "/data/rwm_dataset_extraction/yolov11/dataset.yaml"
+    dataset_yaml = "/fast_data/rwm_dataset_extraction/yolov11/dataset.yaml"
     
     # Test the dataset
     success = test_dataset(dataset_yaml)
