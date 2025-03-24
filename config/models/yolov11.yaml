@@ -1,0 +1,25 @@
+# YOLOv11 specific configuration
+
+# Inherit from default configuration
+inherit: ../default.yaml
+
+# Override dataset configuration
+dataset:
+  output_dir: "./output/yolov11"
+  
+  # YOLOv11 specific directory structure
+  structure:
+    images_dir: "images"
+    labels_dir: "labels"
+    train_dir: "train"
+    val_dir: "val"
+    test_dir: "test"
+  
+  # YOLOv11 specific dataset configuration
+  yaml_filename: "dataset.yaml"
+  
+  # YOLOv11 specific image size
+  image_size: 1280
+  
+  # Symlink images instead of copying
+  use_symlinks: true
