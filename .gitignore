@@ -4,8 +4,6 @@ rwm_dataset_tools_codebase.txt
 
 # Python bytecode files
 **/__pycache__/
-__pycache__/
-/pycache/*
 *.py[cod]
 *$py.class
 *.so
