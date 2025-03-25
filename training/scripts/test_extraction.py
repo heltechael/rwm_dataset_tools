@@ -40,7 +40,6 @@ def test_dataset(dataset_yaml, num_batches=2):
             data=dataset_yaml,
             batch=2,  # Small batch size for quick testing
             imgsz=640,  # Small image size for quick testing
-            max_dim=640,  # Limit maximum dimension
             plots=False,  # Don't create plots
             max_det=10,  # Limit detections for speed
             verbose=True,  # Show progress
@@ -98,7 +97,7 @@ def test_dataset(dataset_yaml, num_batches=2):
 
 if __name__ == "__main__":
     # Path to your extracted dataset YAML
-    dataset_yaml = "/fast_data/rwm_dataset_extraction/yolov11/dataset.yaml"
+    dataset_yaml = "/fast_data/rwm_dataset_yolov11/dataset.yaml"
     
     # Test the dataset
     success = test_dataset(dataset_yaml)

@@ -5,9 +5,9 @@ import yaml
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train YOLOv11 on RWM dataset')
-    parser.add_argument('--data', type=str, default='/data/rwm_dataset_extraction/yolov11/dataset.yaml', 
+    parser.add_argument('--data', type=str, default='/fast_data/rwm_dataset_yolov11/dataset.yaml', 
                         help='Path to dataset configuration')
-    parser.add_argument('--model', type=str, default='/data/model_training/yolov11/models/yolo11x.pt', 
+    parser.add_argument('--model', type=str, default='/fast_data/rwm_dataset_yolov11/models/yolo11x.pt', 
                         help='Path to model')
     parser.add_argument('--epochs', type=int, default=300, 
                         help='Number of training epochs')
